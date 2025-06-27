@@ -28,4 +28,4 @@ Aqui você pode lançar, editar e excluir movimentos financeiros, filtrar por ca
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/FinanceControl.git
+   git clone https://github.com/HerbertOliveiraDev/FinanceControl.git
