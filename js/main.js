@@ -1,40 +1,41 @@
-function formatBRL(valor) {
-    return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
-function geraId() {
-    return '_' + Math.random().toString(36).substr(2, 9);
-}
-
-let lancamentos = JSON.parse(localStorage.getItem("lancamentos")) || [];
-let editandoId = null;
-
-const tabela = document.getElementById("lista-lancamentos");
-const totalReceitas = document.getElementById("total-receitas");
-const totalDespesas = document.getElementById("total-despesas");
-const saldo = document.getElementById("saldo");
-const semLancamentos = document.getElementById("sem-lancamentos");
-const alertaForm = document.getElementById("alerta-form");
-const filtroCategoria = document.getElementById("filtro-categoria");
-const filtroTipo = document.getElementById("filtro-tipo");
-const limparFiltros = document.getElementById("limpar-filtros");
+// SIDEBAR MOBILE
 const sidebar = document.getElementById("sidebar");
 const openSidebar = document.getElementById("openSidebar");
-const lancamentoForm = document.getElementById("lancamento-form");
-const limparTodos = document.getElementById("limpar-todos");
-
-openSidebar.addEventListener('click', () => sidebar.classList.add('open'));
+const closeSidebar = document.getElementById("closeSidebar");
+if (openSidebar) openSidebar.onclick = () => sidebar.classList.add('open');
+if (closeSidebar) closeSidebar.onclick = () => sidebar.classList.remove('open');
 document.body.addEventListener('click', e => {
     if (window.innerWidth < 992 && sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== openSidebar) {
         sidebar.classList.remove('open');
     }
 });
 
+// DARK MODE
 document.getElementById("toggle-theme").addEventListener("click", function() {
     document.body.classList.toggle("bg-dark");
     document.body.classList.toggle("bg-light");
 });
 
+// ELEMENTOS
+const tabela = document.getElementById("lista-lancamentos");
+const filtroCategoria = document.getElementById("filtro-categoria");
+const filtroTipo = document.getElementById("filtro-tipo");
+const limparFiltros = document.getElementById("limpar-filtros");
+const semLancamentos = document.getElementById("sem-lancamentos");
+const totalReceitas = document.getElementById("total-receitas");
+const totalDespesas = document.getElementById("total-despesas");
+const saldo = document.getElementById("saldo");
+const lancamentoForm = document.getElementById("lancamento-form");
+const alertaForm = document.getElementById("alerta-form");
+const limparTodos = document.getElementById("limpar-todos");
+
+// LOCALSTORAGE
+let lancamentos = JSON.parse(localStorage.getItem("lancamentos") || "[]");
+let editandoId = null;
+function geraId() { return "_" + Math.random().toString(36).substr(2, 9); }
+function formatBRL(valor) { return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); }
+
+// GRAFICO
 let chart;
 function atualizaGrafico(receitas, despesas) {
     const ctx = document.getElementById('grafico').getContext('2d');
@@ -56,6 +57,7 @@ function atualizaGrafico(receitas, despesas) {
     });
 }
 
+// RENDER LISTA
 function renderLancamentos() {
     tabela.innerHTML = "";
     let listaFiltrada = lancamentos.filter(l => {
@@ -123,6 +125,7 @@ limparTodos.onclick = function() {
     }
 };
 
+// RESUMO
 function atualizaResumo() {
     let listaFiltrada = lancamentos.filter(l => {
         let catOK = !filtroCategoria.value || l.categoria === filtroCategoria.value;
@@ -139,6 +142,7 @@ function atualizaResumo() {
     atualizaGrafico(receitas, despesas);
 }
 
+// FORMULÁRIO
 lancamentoForm.addEventListener("submit", function(e) {
     e.preventDefault();
     if (!this.checkValidity()) {
@@ -167,7 +171,7 @@ lancamentoForm.addEventListener("submit", function(e) {
     setTimeout(() => {
         alertaForm.style.opacity = 0;
         setTimeout(() => alertaForm.classList.add('d-none'), 400);
-    }, 1500);
+    }, 1400);
     renderLancamentos();
     atualizaResumo();
 });
