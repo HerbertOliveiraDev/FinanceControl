@@ -1,0 +1,79 @@
+.appbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.appbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.appbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 1rem;
+}
+
+.theme-toggle:hover {
+  background: var(--bg);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary-glow-dark);
+}
+
+/* Tema escuro específico */
+body.dark .appbar {
+  background: var(--card-bg-dark);
+  border-bottom-color: var(--border-dark);
+}
+
+body.dark .theme-toggle:hover {
+  background: var(--hover-bg-dark);
+  border-color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .appbar {
+    padding: 0 16px;
+    height: 60px;
+  }
+  
+  .app-title {
+    font-size: 1.125rem;
+  }
+} 

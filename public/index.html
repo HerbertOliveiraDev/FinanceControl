@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinanceControl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../src/styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="appbar">
+    <div class="appbar-left">
+      <img src="assets/logo.svg" alt="Logo" class="logo">
+      <span class="app-title">FinanceControl</span>
+    </div>
+    <div class="appbar-center">
+      <span class="saldo-label">Saldo:</span>
+      <span class="saldo-value" id="saldo">R$ 0,00</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema">🌗</button>
+  </header>
+  <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><button class="nav-btn active" title="Dashboard"><span>🏠</span></button></li>
+      <li><button class="nav-btn" title="Relatórios"><span>📈</span></button></li>
+      <li><button class="nav-btn" title="Categorias"><span>🗂️</span></button></li>
+      <li><button class="nav-btn" title="Configurações"><span>⚙️</span></button></li>
+    </ul>
+  </nav>
+  <main class="main-area">
+    <section class="cards-row">
+      <div class="card card-income">
+        <span class="card-label">Receitas</span>
+        <span class="card-value" id="total-receitas">R$ 0,00</span>
+      </div>
+      <div class="card card-expense">
+        <span class="card-label">Despesas</span>
+        <span class="card-value" id="total-despesas">R$ 0,00</span>
+      </div>
+      <div class="card card-balance">
+        <span class="card-label">Saldo</span>
+        <span class="card-value" id="saldo-card">R$ 0,00</span>
+      </div>
+    </section>
+    <section class="table-section">
+      <div class="table-header">
+        <h2>Lançamentos</h2>
+        <button class="clear-btn" id="limpar-todos" title="Limpar todos">🧹</button>
+      </div>
+      <table class="launch-table">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="lista-lancamentos">
+          <tr class="empty-row"><td colspan="6">Nenhum lançamento encontrado.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <button class="fab" id="open-modal" title="Adicionar lançamento">＋</button>
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal" id="modal-form" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <form id="lancamento-form" autocomplete="off">
+      <h2 id="modal-title">Adicionar Lançamento</h2>
+      <label>Descrição
+        <input type="text" id="descricao" required placeholder="Ex: Salário, Mercado...">
+      </label>
+      <label>Valor (R$)
+        <input type="number" id="valor" min="0.01" step="0.01" required placeholder="0,00">
+      </label>
+      <label>Categoria
+        <select id="categoria" required>
+          <option value="" disabled selected>Selecione</option>
+          <option>Salário</option>
+          <option>Alimentação</option>
+          <option>Transporte</option>
+          <option>Educação</option>
+          <option>Saúde</option>
+          <option>Lazer</option>
+          <option>Outros</option>
+        </select>
+      </label>
+      <label>Tipo
+        <select id="tipo" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="receita">Receita</option>
+          <option value="despesa">Despesa</option>
+        </select>
+      </label>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Salvar</button>
+        <button type="button" class="btn-secondary" id="close-modal">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  <script src="../src/main.js"></script>
+</body>
+</html> 

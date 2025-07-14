@@ -1,0 +1,41 @@
+:root {
+  --primary: #2c5aa0;
+  --primary2: #1e3a8a;
+  --accent: #059669;
+  --danger: #dc2626;
+  --bg: #f8fafc;
+  --bg-dark: #0a0f1c;
+  --glass: rgba(255,255,255,0.85);
+  --glass-dark: rgba(15,23,42,0.95);
+  --text: #1e293b;
+  --text-dark: #f8fafc;
+  --text-muted: #64748b;
+  --text-muted-dark: #94a3b8;
+  --border: #e2e8f0;
+  --border-dark: #1e293b;
+  --shadow: 0 4px 20px 0 rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 30px 0 rgba(0,0,0,0.12);
+  --shadow-dark: 0 4px 20px 0 rgba(0,0,0,0.4);
+  --shadow-hover-dark: 0 8px 30px 0 rgba(0,0,0,0.6);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --transition: 0.2s ease-in-out;
+  
+  /* Cores específicas para tema escuro */
+  --card-bg-dark: rgba(30,41,59,0.8);
+  --input-bg-dark: rgba(15,23,42,0.9);
+  --hover-bg-dark: rgba(51,65,85,0.3);
+  --primary-glow-dark: rgba(44,90,160,0.2);
+  --accent-glow-dark: rgba(5,150,105,0.2);
+  --danger-glow-dark: rgba(220,38,38,0.2);
+}
+
+body.dark {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --text-muted: var(--text-muted-dark);
+  --glass: var(--glass-dark);
+  --border: var(--border-dark);
+  --shadow: var(--shadow-dark);
+  --shadow-hover: var(--shadow-hover-dark);
+} 

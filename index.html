@@ -1,204 +1,256 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard financeiro pessoal para controle de receitas e despesas. Gerencie suas finanças de forma simples e eficiente.">
+    <meta name="keywords" content="finanças, controle financeiro, receitas, despesas, dashboard, orçamento pessoal">
+    <meta name="author" content="FinanceControl">
+    <meta name="theme-color" content="#f1c40f">
+    
     <title>FinanceControl - Dashboard Financeiro Pessoal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
+    <link rel="preload" href="css/styles.css" as="style">
+    
     <!-- Fontes e estilos -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/logo.svg" type="image/svg+xml">
 </head>
 <body class="bg-light">
-    <!-- Sidebar -->
-    <nav id="sidebar" class="sidebar d-lg-block text-white px-3 py-4">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable">Pular para o conteúdo principal</a>
+    
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="sidebar d-lg-block text-white px-3 py-4" role="navigation" aria-label="Menu principal">
         <div class="d-flex align-items-center mb-4">
-            <img src="img/logo.svg" alt="Logo" width="36" class="me-2">
+            <img src="img/logo.svg" alt="Logo FinanceControl" width="36" height="36" class="me-2">
             <span class="fs-5 fw-bold">FinanceControl</span>
-            <button id="closeSidebar" class="btn btn-link text-white d-lg-none ms-auto" style="font-size:1.4rem;" title="Fechar Menu">&times;</button>
+            <button id="closeSidebar" class="btn btn-link text-white d-lg-none ms-auto" style="font-size:1.4rem;" title="Fechar Menu" aria-label="Fechar menu de navegação">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-        <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link active text-white"><i class="bi bi-house me-1"></i> Dashboard</a></li>
-            <li class="nav-item mb-2"><a href="#grafico" class="nav-link text-white"><i class="bi bi-pie-chart me-1"></i> Gráficos</a></li>
-            <li class="nav-item mb-2"><a href="#form-lancamento" class="nav-link text-white"><i class="bi bi-plus-circle me-1"></i> Novo Lançamento</a></li>
-            <li class="nav-item mt-3"><button id="toggle-theme" class="btn btn-outline-light w-100"><i class="bi bi-moon-stars"></i> Tema</button></li>
+        
+        <ul class="nav flex-column" role="menubar">
+            <li class="nav-item mb-2" role="none">
+                <a href="#dashboard" class="nav-link active text-white" role="menuitem" aria-current="page">
+                    <i class="bi bi-house me-1" aria-hidden="true"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item mb-2" role="none">
+                <a href="#grafico" class="nav-link text-white" role="menuitem">
+                    <i class="bi bi-pie-chart me-1" aria-hidden="true"></i> Gráficos
+                </a>
+            </li>
+            <li class="nav-item mb-2" role="none">
+                <a href="#form-lancamento" class="nav-link text-white" role="menuitem">
+                    <i class="bi bi-plus-circle me-1" aria-hidden="true"></i> Novo Lançamento
+                </a>
+            </li>
+            <li class="nav-item mt-3" role="none">
+                <button id="toggle-theme" class="btn btn-outline-light w-100" aria-label="Alternar entre tema claro e escuro">
+                    <i class="bi bi-moon-stars" aria-hidden="true"></i> Tema
+                </button>
+            </li>
         </ul>
     </nav>
+    
     <!-- Overlay para fechar menu mobile -->
-    <div id="sidebar-overlay"></div>
+    <div id="sidebar-overlay" aria-hidden="true"></div>
+    
     <!-- Sidebar mobile hamburger -->
-    <button id="openSidebar" class="btn btn-primary d-lg-none position-fixed m-3" style="z-index:1040; top:0; left:0;">
-        <span class="navbar-toggler-icon"></span>
+    <button id="openSidebar" class="btn btn-primary d-lg-none position-fixed m-3" style="z-index:1040; top:0; left:0;" aria-label="Abrir menu de navegação">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
     </button>
+    
     <!-- Main content -->
-    <div class="container-fluid main-content px-lg-4 py-3">
+    <main id="main-content" class="container-fluid main-content px-lg-4 py-3" role="main">
         <header class="mb-3 d-flex justify-content-between align-items-center flex-wrap">
             <div class="d-flex align-items-center gap-2">
-                <img src="img/logo.svg" width="32" alt="Logo">
+                <img src="img/logo.svg" width="32" height="32" alt="Logo FinanceControl">
                 <h1 class="fs-4 mb-0 fw-semibold">Dashboard Financeiro</h1>
             </div>
-            
         </header>
+        
         <!-- Resumo + Gráfico + Filtros juntos -->
-        <div class="row g-3 align-items-start mb-3 animate-fadein">
+        <section id="dashboard" class="row g-3 align-items-start mb-3 animate-fadein" aria-labelledby="dashboard-heading">
+            <h2 id="dashboard-heading" class="visually-hidden">Resumo Financeiro</h2>
+            
             <div class="col-12 col-md-5 col-lg-4">
-                <section>
-                    <div class="row g-2">
-                        <div class="col-12 col-sm-6 col-md-12 mb-2">
-                            <div class="card border-success shadow-sm card-resumo">
-                                <div class="card-body text-success d-flex align-items-center gap-2">
-                                    <i class="bi bi-arrow-up-circle-fill fs-3"></i>
-                                    <div>
-                                        <h6 class="card-title mb-1">Receitas</h6>
-                                        <div class="fs-5 fw-bold" id="total-receitas">R$ 0,00</div>
-                                    </div>
+                <div class="row g-2">
+                    <div class="col-12 col-sm-6 col-md-12 mb-2">
+                        <article class="card border-success shadow-sm card-resumo">
+                            <div class="card-body text-success d-flex align-items-center gap-2">
+                                <i class="bi bi-arrow-up-circle-fill fs-3" aria-hidden="true"></i>
+                                <div>
+                                    <h3 class="card-title mb-1 h6">Receitas</h3>
+                                    <div class="fs-5 fw-bold" id="total-receitas" aria-live="polite">R$ 0,00</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-12 mb-2">
-                            <div class="card border-danger shadow-sm card-resumo">
-                                <div class="card-body text-danger d-flex align-items-center gap-2">
-                                    <i class="bi bi-arrow-down-circle-fill fs-3"></i>
-                                    <div>
-                                        <h6 class="card-title mb-1">Despesas</h6>
-                                        <div class="fs-5 fw-bold" id="total-despesas">R$ 0,00</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-12">
-                            <div class="card border-info shadow-sm card-resumo">
-                                <div class="card-body text-info d-flex align-items-center gap-2">
-                                    <i class="bi bi-cash-coin fs-3"></i>
-                                    <div>
-                                        <h6 class="card-title mb-1">Saldo</h6>
-                                        <div class="fs-5 fw-bold" id="saldo">R$ 0,00</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </article>
                     </div>
-                </section>
+                    <div class="col-12 col-sm-6 col-md-12 mb-2">
+                        <article class="card border-danger shadow-sm card-resumo">
+                            <div class="card-body text-danger d-flex align-items-center gap-2">
+                                <i class="bi bi-arrow-down-circle-fill fs-3" aria-hidden="true"></i>
+                                <div>
+                                    <h3 class="card-title mb-1 h6">Despesas</h3>
+                                    <div class="fs-5 fw-bold" id="total-despesas" aria-live="polite">R$ 0,00</div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <article class="card border-info shadow-sm card-resumo">
+                            <div class="card-body text-info d-flex align-items-center gap-2">
+                                <i class="bi bi-cash-coin fs-3" aria-hidden="true"></i>
+                                <div>
+                                    <h3 class="card-title mb-1 h6">Saldo</h3>
+                                    <div class="fs-5 fw-bold" id="saldo" aria-live="polite">R$ 0,00</div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
+            
             <div class="col-12 col-md-3 col-lg-3 d-flex flex-column align-items-center">
-                <section class="w-100 mb-1">
+                <section class="w-100 mb-1" aria-labelledby="grafico-heading">
+                    <h2 id="grafico-heading" class="visually-hidden">Gráfico de Receitas vs Despesas</h2>
                     <div class="card shadow-sm animate-up">
                         <div class="card-body d-flex flex-column align-items-center">
-                            <h6 class="mb-2 w-100 text-center">Receitas vs Despesas</h6>
-                            <div class="grafico-container w-100 d-flex justify-content-center">
+                            <h3 class="mb-2 w-100 text-center h6">Receitas vs Despesas</h3>
+                            <div class="grafico-container w-100 d-flex justify-content-center" role="img" aria-label="Gráfico de pizza mostrando a proporção entre receitas e despesas">
                                 <canvas id="grafico"></canvas>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
+            
             <div class="col-12 col-md-4 col-lg-5">
-                <section>
+                <section aria-labelledby="filtros-heading">
+                    <h2 id="filtros-heading" class="visually-hidden">Filtros</h2>
                     <div class="row g-2 align-items-end">
                         <div class="col-12 col-md-6 mb-1">
-                            <select id="filtro-categoria" class="form-select">
+                            <label for="filtro-categoria" class="form-label visually-hidden">Filtrar por categoria</label>
+                            <select id="filtro-categoria" class="form-select" aria-label="Filtrar por categoria">
                                 <option value="">Todas as Categorias</option>
-                                <option>Salário</option>
-                                <option>Alimentação</option>
-                                <option>Transporte</option>
-                                <option>Educação</option>
-                                <option>Saúde</option>
-                                <option>Lazer</option>
-                                <option>Outros</option>
+                                <option value="Salário">Salário</option>
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Transporte">Transporte</option>
+                                <option value="Educação">Educação</option>
+                                <option value="Saúde">Saúde</option>
+                                <option value="Lazer">Lazer</option>
+                                <option value="Outros">Outros</option>
                             </select>
                         </div>
                         <div class="col-12 col-md-6 mb-1">
-                            <select id="filtro-tipo" class="form-select">
+                            <label for="filtro-tipo" class="form-label visually-hidden">Filtrar por tipo</label>
+                            <select id="filtro-tipo" class="form-select" aria-label="Filtrar por tipo">
                                 <option value="">Todos os Tipos</option>
                                 <option value="receita">Receita</option>
                                 <option value="despesa">Despesa</option>
                             </select>
                         </div>
                         <div class="col-12 text-end">
-                            <button id="limpar-filtros" class="btn btn-secondary btn-sm">Limpar Filtros</button>
+                            <button id="limpar-filtros" class="btn btn-secondary btn-sm" aria-label="Limpar todos os filtros aplicados">Limpar Filtros</button>
                         </div>
                     </div>
                 </section>
             </div>
-        </div>
-        <!-- Formulário -->
-        <section class="mb-2 animate-fadein">
+        </section>
+        
+        <!-- Formulário + Lista de lançamentos juntos -->
+        <section class="mb-2 animate-fadein" aria-labelledby="form-lancamentos-heading">
+            <h2 id="form-lancamentos-heading" class="visually-hidden">Adicionar e Listar Lançamentos</h2>
             <div class="card shadow-sm">
-                <div class="card-header bg-white" id="form-lancamento">Adicionar Lançamento</div>
-                <div class="card-body">
+                <div class="card-header bg-white d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2">
+                    <h3 class="h5 mb-0">Adicionar Lançamento</h3>
+                </div>
+                <div class="card-body pb-0">
                     <form id="lancamento-form" class="row g-2 needs-validation" novalidate>
-                        <div class="col-12 col-sm-4">
-                            <input type="text" class="form-control" id="descricao" placeholder="Ex: Salário, Mercado..." required>
+                        <div class="col-12 col-md-4">
+                            <label for="descricao" class="form-label visually-hidden">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" placeholder="Ex: Salário, Mercado..." required aria-describedby="descricao-help">
                             <div class="invalid-feedback">Digite uma descrição.</div>
+                            <div id="descricao-help" class="form-text visually-hidden">Digite uma descrição clara para o lançamento</div>
                         </div>
-                        <div class="col-12 col-sm-2">
-                            <input type="number" min="0.01" step="0.01" class="form-control" id="valor" placeholder="Valor (R$)" required>
+                        <div class="col-6 col-md-2">
+                            <label for="valor" class="form-label visually-hidden">Valor</label>
+                            <input type="number" min="0.01" step="0.01" class="form-control" id="valor" placeholder="Valor (R$)" required aria-describedby="valor-help">
                             <div class="invalid-feedback">Informe um valor válido.</div>
+                            <div id="valor-help" class="form-text visually-hidden">Digite o valor em reais</div>
                         </div>
-                        <div class="col-12 col-sm-3">
-                            <select class="form-select" id="categoria" required>
+                        <div class="col-6 col-md-3">
+                            <label for="categoria" class="form-label visually-hidden">Categoria</label>
+                            <select class="form-select" id="categoria" required aria-describedby="categoria-help">
                                 <option value="" selected disabled>Categoria</option>
-                                <option>Salário</option>
-                                <option>Alimentação</option>
-                                <option>Transporte</option>
-                                <option>Educação</option>
-                                <option>Saúde</option>
-                                <option>Lazer</option>
-                                <option>Outros</option>
+                                <option value="Salário">Salário</option>
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Transporte">Transporte</option>
+                                <option value="Educação">Educação</option>
+                                <option value="Saúde">Saúde</option>
+                                <option value="Lazer">Lazer</option>
+                                <option value="Outros">Outros</option>
                             </select>
                             <div class="invalid-feedback">Escolha uma categoria.</div>
+                            <div id="categoria-help" class="form-text visually-hidden">Selecione a categoria do lançamento</div>
                         </div>
-                        <div class="col-12 col-sm-2">
-                            <select class="form-select" id="tipo" required>
+                        <div class="col-6 col-md-2">
+                            <label for="tipo" class="form-label visually-hidden">Tipo</label>
+                            <select class="form-select" id="tipo" required aria-describedby="tipo-help">
                                 <option value="">Tipo</option>
                                 <option value="receita">Receita</option>
                                 <option value="despesa">Despesa</option>
                             </select>
                             <div class="invalid-feedback">Selecione o tipo.</div>
+                            <div id="tipo-help" class="form-text visually-hidden">Selecione se é uma receita ou despesa</div>
                         </div>
-                        <div class="col-12 col-sm-1 d-grid">
-                            <button type="submit" class="btn btn-primary">Adicionar</button>
+                        <div class="col-6 col-md-1 d-grid">
+                            <button type="submit" class="btn btn-primary w-100" aria-describedby="submit-help">Adicionar</button>
+                            <div id="submit-help" class="form-text visually-hidden">Clique para adicionar o lançamento</div>
                         </div>
                     </form>
-                    <div id="alerta-form" class="alert alert-success d-none mt-3" role="alert">
+                    <div id="alerta-form" class="alert alert-success d-none mt-3" role="alert" aria-live="polite">
                         Lançamento salvo!
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Lista de lançamentos -->
-        <section>
-            <div class="card shadow-sm mb-2 animate-fadein">
-                <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                    <span>Lançamentos</span>
-                    <button id="limpar-todos" class="btn btn-outline-danger btn-sm">Limpar Todos</button>
-                </div>
-                <div class="card-body table-responsive">
-                    <table class="table table-striped align-middle mb-0">
-                        <thead>
-                            <tr>
-                                <th>Descrição</th>
-                                <th>Valor (R$)</th>
-                                <th>Categoria</th>
-                                <th>Tipo</th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody id="lista-lancamentos">
-                            <!-- Itens vão aqui -->
-                        </tbody>
-                    </table>
-                    <div id="sem-lancamentos" class="text-center text-muted d-none py-2">
-                        Nenhum lançamento encontrado.
+                <div class="card-body pt-0">
+                    <h3 class="h5 mb-3">Lançamentos</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle mb-0" role="table" aria-labelledby="lancamentos-heading">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Valor (R$)</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista-lancamentos">
+                                <!-- Itens vão aqui -->
+                            </tbody>
+                        </table>
+                        <div id="sem-lancamentos" class="text-center text-muted d-none py-2" role="status" aria-live="polite">
+                            Nenhum lançamento encontrado.
+                        </div>
+                    </div>
+                    <div class="text-end mt-2">
+                        <button id="limpar-todos" class="btn btn-outline-danger btn-sm" aria-label="Remover todos os lançamentos">Limpar Todos</button>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
+    
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/main.js"></script>
 </body>
