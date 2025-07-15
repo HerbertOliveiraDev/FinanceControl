@@ -2,9 +2,21 @@
 
 ![FinanceControl Logo](img/logo.svg)
 
-Um dashboard financeiro pessoal moderno e responsivo para controle de receitas e despesas, desenvolvido com HTML5, CSS3 e JavaScript vanilla.
+Um dashboard financeiro pessoal moderno e responsivo para controle de receitas e despesas, disponível em duas versões: **Vanilla JavaScript** e **React + Vite**.
 
-## ✨ Características
+## 🚀 Versões Disponíveis
+
+### 📱 Versão Vanilla (HTML/CSS/JS)
+- **Localização**: `/` (raiz do projeto)
+- **Tecnologias**: HTML5, CSS3, JavaScript ES6+
+- **Características**: Leve, rápida, sem dependências externas
+
+### ⚛️ Versão React + Vite
+- **Localização**: `/financecontrol-vite/`
+- **Tecnologias**: React 18, Vite, CSS Modules
+- **Características**: Componentes reutilizáveis, hot reload, build otimizado
+
+## ✨ Características Principais
 
 - 📊 **Dashboard Interativo**: Visualização clara de receitas, despesas e saldo
 - 📈 **Gráficos Dinâmicos**: Gráfico de pizza mostrando a proporção entre receitas e despesas
@@ -16,39 +28,9 @@ Um dashboard financeiro pessoal moderno e responsivo para controle de receitas e
 - ✏️ **Edição em Tempo Real**: Edite lançamentos diretamente na interface
 - 🎯 **Interface Intuitiva**: Design moderno e fácil de usar
 
-## 🚀 Como Usar
-
-### Instalação
-
-1. Clone ou baixe este repositório
-2. Abra o arquivo `index.html` em seu navegador
-3. Comece a adicionar seus lançamentos financeiros!
-
-### Funcionalidades
-
-#### Adicionar Lançamento
-1. Preencha a descrição (ex: "Salário", "Mercado")
-2. Digite o valor em reais
-3. Selecione a categoria
-4. Escolha o tipo (Receita ou Despesa)
-5. Clique em "Adicionar"
-
-#### Editar Lançamento
-1. Clique no ícone de lápis ao lado do lançamento
-2. Os dados serão carregados no formulário
-3. Faça as alterações necessárias
-4. Clique em "Salvar"
-
-#### Filtrar Lançamentos
-- Use os filtros de categoria e tipo para visualizar lançamentos específicos
-- Clique em "Limpar Filtros" para remover todos os filtros
-
-#### Alternar Tema
-- Clique no botão "Tema" na sidebar para alternar entre tema claro e escuro
-- Sua preferência será salva automaticamente
-
 ## 🛠️ Tecnologias Utilizadas
 
+### Versão Vanilla
 - **HTML5**: Estrutura semântica e acessível
 - **CSS3**: Estilos modernos com variáveis CSS e animações
 - **JavaScript ES6+**: Funcionalidades interativas com classes e módulos
@@ -56,18 +38,81 @@ Um dashboard financeiro pessoal moderno e responsivo para controle de receitas e
 - **Chart.js**: Biblioteca para criação de gráficos
 - **Bootstrap Icons**: Ícones consistentes e modernos
 
+### Versão React + Vite
+- **React 18**: Biblioteca para construção de interfaces
+- **Vite**: Build tool rápida e moderna
+- **CSS Modules**: Estilos encapsulados por componente
+- **ESLint**: Linting de código JavaScript
+- **FontAwesome**: Ícones modernos
+- **Google Fonts**: Tipografia Inter
+
+## 🚀 Como Usar
+
+### Versão Vanilla
+
+1. Clone ou baixe este repositório
+2. Abra o arquivo `index.html` em seu navegador
+3. Comece a adicionar seus lançamentos financeiros!
+
+### Versão React + Vite
+
+1. Navegue para a pasta do projeto:
+   ```bash
+   cd financecontrol-vite
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+3. Execute o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+
+4. Abra [http://localhost:5173](http://localhost:5173) no seu navegador
+
+5. Para build de produção:
+   ```bash
+   npm run build
+   ```
+
 ## 📁 Estrutura do Projeto
 
 ```
 FinanceControl/
-├── index.html          # Página principal
+├── index.html              # Versão Vanilla - Página principal
 ├── css/
-│   └── styles.css      # Estilos personalizados
+│   └── styles.css          # Estilos da versão Vanilla
 ├── js/
-│   └── main.js         # Lógica da aplicação
+│   └── main.js             # Lógica da versão Vanilla
 ├── img/
-│   └── logo.svg        # Logo do projeto
-└── README.md           # Documentação
+│   └── logo.svg            # Logo do projeto
+├── financecontrol-vite/    # Versão React + Vite
+│   ├── index.html          # Template HTML
+│   ├── package.json        # Dependências e scripts
+│   ├── vite.config.js      # Configuração do Vite
+│   ├── eslint.config.js    # Configuração do ESLint
+│   ├── public/
+│   │   └── assets/
+│   │       └── logo.svg    # Assets públicos
+│   └── src/
+│       ├── main.jsx        # Ponto de entrada React
+│       ├── App.jsx         # Componente principal
+│       ├── components/     # Componentes React
+│       │   ├── AppBar.jsx
+│       │   ├── Cards.jsx
+│       │   ├── DashboardChart.jsx
+│       │   ├── Fab.jsx
+│       │   ├── Modal.jsx
+│       │   └── Table.jsx
+│       └── styles/         # Estilos globais
+│           ├── global.css
+│           └── theme.css
+├── public/                 # Assets públicos (versão Vanilla)
+├── src/                    # Código fonte (versão Vanilla)
+└── README.md               # Documentação
 ```
 
 ## 🎨 Design System
@@ -80,13 +125,14 @@ FinanceControl/
 
 ### Tipografia
 - **Fonte Principal**: Inter (Google Fonts)
-- **Pesos**: 400 (Regular), 600 (Semi-bold)
+- **Pesos**: 400 (Regular), 500 (Medium), 600 (Semi-bold), 700 (Bold)
 
 ### Componentes
 - Cards com bordas arredondadas e sombras suaves
 - Botões com gradientes e efeitos hover
 - Tabelas responsivas com listras alternadas
 - Formulários com validação visual
+- Modais para edição de dados
 
 ## ♿ Acessibilidade
 
@@ -106,35 +152,41 @@ O projeto segue as diretrizes WCAG 2.1 AA:
 - **Tablet**: Layout adaptativo com cards empilhados
 - **Mobile**: Menu hamburger e layout otimizado para toque
 
-## 🔧 Personalização
+## 🔧 Funcionalidades
 
-### Adicionar Novas Categorias
+### Adicionar Lançamento
+1. Preencha a descrição (ex: "Salário", "Mercado")
+2. Digite o valor em reais
+3. Selecione a categoria
+4. Escolha o tipo (Receita ou Despesa)
+5. Clique em "Adicionar"
 
-Para adicionar novas categorias, edite os arquivos `index.html` e `js/main.js`:
+### Editar Lançamento
+1. Clique no ícone de lápis ao lado do lançamento
+2. Os dados serão carregados no formulário
+3. Faça as alterações necessárias
+4. Clique em "Salvar"
 
-```html
-<!-- No HTML -->
-<option value="Nova Categoria">Nova Categoria</option>
-```
+### Filtrar Lançamentos
+- Use os filtros de categoria e tipo para visualizar lançamentos específicos
+- Clique em "Limpar Filtros" para remover todos os filtros
 
-### Modificar Cores
-
-As cores podem ser facilmente alteradas através das variáveis CSS em `css/styles.css`:
-
-```css
-:root {
-    --primary-color: #sua-cor-aqui;
-    --success-color: #sua-cor-aqui;
-    --danger-color: #sua-cor-aqui;
-}
-```
+### Alternar Tema
+- Clique no botão "Tema" na sidebar para alternar entre tema claro e escuro
+- Sua preferência será salva automaticamente
 
 ## 🚀 Performance
 
+### Versão Vanilla
 - **Carregamento Otimizado**: Preload de recursos críticos
 - **Animações Suaves**: Transições CSS otimizadas
 - **Código Minificado**: Dependências CDN para melhor performance
-- **Lazy Loading**: Carregamento sob demanda de componentes
+
+### Versão React + Vite
+- **Hot Module Replacement**: Atualizações instantâneas durante desenvolvimento
+- **Code Splitting**: Carregamento sob demanda de componentes
+- **Tree Shaking**: Eliminação de código não utilizado
+- **Build Otimizado**: Assets otimizados para produção
 
 ## 🔒 Segurança
 
@@ -169,6 +221,13 @@ Contribuições são bem-vindas! Para contribuir:
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
+### Diretrizes de Contribuição
+
+- Mantenha a consistência entre as duas versões (Vanilla e React)
+- Teste em diferentes navegadores
+- Siga as convenções de código estabelecidas
+- Documente novas funcionalidades
+
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
@@ -178,7 +237,10 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 - [Bootstrap](https://getbootstrap.com/) - Framework CSS
 - [Chart.js](https://www.chartjs.org/) - Biblioteca de gráficos
 - [Bootstrap Icons](https://icons.getbootstrap.com/) - Ícones
+- [FontAwesome](https://fontawesome.com/) - Ícones modernos
 - [Google Fonts](https://fonts.google.com/) - Tipografia
+- [Vite](https://vitejs.dev/) - Build tool moderna
+- [React](https://reactjs.org/) - Biblioteca JavaScript
 
 ## 📞 Suporte
 
@@ -187,6 +249,17 @@ Se você encontrar algum problema ou tiver sugestões, por favor:
 1. Verifique se o problema já foi reportado
 2. Crie uma nova issue com detalhes do problema
 3. Inclua informações sobre seu navegador e sistema operacional
+4. Especifique qual versão está usando (Vanilla ou React)
+
+## 🔄 Roadmap
+
+- [ ] Backend com Node.js e Express
+- [ ] Autenticação de usuários
+- [ ] Sincronização em nuvem
+- [ ] Relatórios avançados
+- [ ] Exportação de dados
+- [ ] Notificações push
+- [ ] PWA (Progressive Web App)
 
 ---
 
