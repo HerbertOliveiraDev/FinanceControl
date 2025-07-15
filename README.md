@@ -232,35 +232,9 @@ Contribuições são bem-vindas! Para contribuir:
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-## 🙏 Agradecimentos
-
-- [Bootstrap](https://getbootstrap.com/) - Framework CSS
-- [Chart.js](https://www.chartjs.org/) - Biblioteca de gráficos
-- [Bootstrap Icons](https://icons.getbootstrap.com/) - Ícones
-- [FontAwesome](https://fontawesome.com/) - Ícones modernos
-- [Google Fonts](https://fonts.google.com/) - Tipografia
-- [Vite](https://vitejs.dev/) - Build tool moderna
-- [React](https://reactjs.org/) - Biblioteca JavaScript
-
-## 📞 Suporte
-
 Se você encontrar algum problema ou tiver sugestões, por favor:
 
 1. Verifique se o problema já foi reportado
 2. Crie uma nova issue com detalhes do problema
 3. Inclua informações sobre seu navegador e sistema operacional
 4. Especifique qual versão está usando (Vanilla ou React)
-
-## 🔄 Roadmap
-
-- [ ] Backend com Node.js e Express
-- [ ] Autenticação de usuários
-- [ ] Sincronização em nuvem
-- [ ] Relatórios avançados
-- [ ] Exportação de dados
-- [ ] Notificações push
-- [ ] PWA (Progressive Web App)
-
----
-
-**Desenvolvido com ❤️ para facilitar o controle financeiro pessoal**
